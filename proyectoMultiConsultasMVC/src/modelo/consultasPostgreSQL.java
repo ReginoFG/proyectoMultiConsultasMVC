@@ -40,8 +40,7 @@ public class consultasPostgreSQL {
 			System.out.println("[INFORMACIÓN-consultasPostgreSQL-selectAllAlumnos] Cierre declaración y resultado");				
 		    resultadoConsulta.close();
 		    declaracionSQL.close();
-		    conexionGenerada.close();
-			
+		    			
 		} catch (SQLException e) {
 			
 			System.out.println("[ERROR-conexionPostgresql-main] Error generando la declaracionSQL: " + e);
@@ -57,6 +56,7 @@ public class consultasPostgreSQL {
 	 * @param String consulta
 	 * @param Connection conexionGenerada
 	 * @return void
+	 * 131022
 	 */
 	public static void insertNuevoAlumno(String consulta, Connection conexionGenerada) {
 		

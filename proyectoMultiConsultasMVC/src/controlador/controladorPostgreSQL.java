@@ -33,6 +33,7 @@ public class controladorPostgreSQL {
 		*utilizando el método generaConexion
 		*/
 		System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada generaConexion");
+		//si no se definen los métodos como estáticos se necesita instanciar la clase.
 		conexionPostgresql conexionPostgresql = new conexionPostgresql();
 		Connection conexionGenerada = conexionPostgresql.generaConexion(HOST,PORT,DB,USER,PASS);
 		
@@ -40,8 +41,9 @@ public class controladorPostgreSQL {
 			//Llamar al método que ejecuta la consulta de insert
 			//Cambiar el id para probar
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada insertNuevoAlumno");
+			//Si los métodos se crean como estáticos no es necesario instanciar una clase.
 			consultasPostgreSQL.insertNuevoAlumno("INSERT INTO \"proyectoEclipse\".\"alumnos\" (id_alumno,nombre,apellidos,email)"
-					+ "VALUES(12,'Paco','Fernández','pf@altair.es')", conexionGenerada);
+					+ "VALUES(15,'Paco','Fernández','pf@altair.es')", conexionGenerada);
 						
 			//Llamar al método que ejecuta la consulta de select
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada selectAllAlumnos");
@@ -53,6 +55,8 @@ public class controladorPostgreSQL {
 			}
 			
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Número alumnos: "+i);
+			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Llamada a cerrarConexion");
+			conexionPostgresql.cerrarConexion(conexionGenerada);
 			
 		}		
 	

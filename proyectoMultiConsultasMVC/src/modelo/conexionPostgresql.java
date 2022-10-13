@@ -62,6 +62,30 @@ public class conexionPostgresql {
             
         }
     }
+	
+	/** cerrarConexion - Método que hace commit y cierra la conexión
+	 * @author garfe
+	 * @param Connection conexionGenerada
+	 * @return void
+	 * 131022
+	 */
+	public void cerrarConexion (Connection conexionGenerada) {
+		
+		System.out.println("[INFORMACIÓN-conexionPostgresql-cerrarConexion] Entra en cerrar conexión");
+		
+		try {
+			
+			//Si el auto commit está habilitado no se hace de forma explícita el commit.
+			//conexionGenerada.commit();
+			conexionGenerada.close();
+			
+		} catch (SQLException e) {
+			
+			System.out.println("[ERROR-conexionPostgresql-cerrarConexion] Error al cerrar conexión PostgreSQL: " + e);
+		
+		}	
+		
+	}
 
 }
 
