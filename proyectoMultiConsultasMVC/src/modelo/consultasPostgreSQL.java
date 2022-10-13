@@ -12,6 +12,12 @@ import java.util.ArrayList;
  */
 public class consultasPostgreSQL {
 	
+	/** selectAllAlumnos - Consulta sobre la tabla alumnos.
+	 * SELECT * FROM \"proyectoEclipse\".\"alumnos\"
+	 * @author garfe
+	 * @param Connection conexionGenerada
+	 * @return ArrayList<dtoAlumno>
+	 */
 	public static ArrayList<dtoAlumno> selectAllAlumnos(Connection conexionGenerada) {
 		
 		System.out.println("[INFORMACIÓN-consultasPostgreSQL-selectAllAlumnos] Entra en selectAllAlumnos");
@@ -31,7 +37,7 @@ public class consultasPostgreSQL {
 			int i = listAlumnos.size();
 			System.out.println("[INFORMACIÓN-consultasPostgreSQL-selectAllAlumnos] Número alumnos: "+i);
 			
-			System.out.println("[INFORMACIÓN-consultasPostgreSQL-selectAllAlumnos] Cierre conexión, declaración y resultado");				
+			System.out.println("[INFORMACIÓN-consultasPostgreSQL-selectAllAlumnos] Cierre declaración y resultado");				
 		    resultadoConsulta.close();
 		    declaracionSQL.close();
 		    conexionGenerada.close();
@@ -43,6 +49,33 @@ public class consultasPostgreSQL {
 			
 		}
 		return listAlumnos;
+		
+	}
+	
+	/** insertNuevoAlumno - Insert informado en el parámetro consulta sobre la tabla alumnos.
+	 * @author garfe
+	 * @param String consulta
+	 * @param Connection conexionGenerada
+	 * @return void
+	 */
+	public static void insertNuevoAlumno(String consulta, Connection conexionGenerada) {
+		
+		System.out.println("[INFORMACIÓN-consultasPostgreSQL-insertNuevoAlumno] Entra en insertNuevoAlumno");
+		Statement declaracionSQL = null;
+		
+		try {
+			
+			declaracionSQL = conexionGenerada.createStatement();
+			declaracionSQL.execute(consulta);
+			declaracionSQL.close();
+			
+			System.out.println("[INFORMACIÓN-consultasPostgreSQL-insertNuevoAlumno] Cierre declaración.");
+			
+		} catch (SQLException e) {
+			
+			System.out.println("[ERROR-consultasPostgreSQL-insertNuevoAlumno] Error al insertar alumno: " + e);
+		
+		}
 		
 	}
 

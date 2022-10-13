@@ -37,11 +37,21 @@ public class controladorPostgreSQL {
 		Connection conexionGenerada = conexionPostgresql.generaConexion(HOST,PORT,DB,USER,PASS);
 		
 		if(conexionGenerada != null) {
-			
-			//Llamar al método que ejecuta la consulta
+			//Llamar al método que ejecuta la consulta de insert
+			//Cambiar el id para probar
+			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada insertNuevoAlumno");
+			consultasPostgreSQL.insertNuevoAlumno("INSERT INTO \"proyectoEclipse\".\"alumnos\" (id_alumno,nombre,apellidos,email)"
+					+ "VALUES(12,'Paco','Fernández','pf@altair.es')", conexionGenerada);
+						
+			//Llamar al método que ejecuta la consulta de select
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada selectAllAlumnos");
 			listAlumnos = consultasPostgreSQL.selectAllAlumnos(conexionGenerada);
 			int i = listAlumnos.size();
+			for(dtoAlumno alumno: listAlumnos) {
+				System.out.println(alumno.getId_alumno() + " " +
+				alumno.getNombre() + " " + alumno.getApellidos() + " " + alumno.getEmail());
+			}
+			
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Número alumnos: "+i);
 			
 		}		
