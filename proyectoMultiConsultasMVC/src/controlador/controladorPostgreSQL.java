@@ -43,7 +43,7 @@ public class controladorPostgreSQL {
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada insertNuevoAlumno");
 			//Si los métodos se crean como estáticos no es necesario instanciar una clase.
 			consultasPostgreSQL.insertNuevoAlumno("INSERT INTO \"proyectoEclipse\".\"alumnos\" (id_alumno,nombre,apellidos,email)"
-					+ "VALUES(15,'Paco','Fernández','pf@altair.es')", conexionGenerada);
+					+ "VALUES(23,'Paco','Fernández','pf@altair.es')", conexionGenerada);
 						
 			//Llamar al método que ejecuta la consulta de select
 			System.out.println("[INFORMACIÓN-controladorPortgreSQL-main] Lamada selectAllAlumnos");
